@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Orbitron:wght@500&display=swap');
+
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+h1 {
+    
+    font-family: "Orbitron", "Manrope", sans-serif;
+}
+
+sup {
+    font-family: manrope, sans-serif;
+    font-size: 10px;
+}
+
+body {
+    margin: 0;
+    font-family: manrope, sans-serif;
+}
+
+header {
+    padding: 10px;
+    height: 100px;
+    background-color: #6623F0;
+    color: #cfcfcf;
+}
+
+
+.card {
+    background: #996DF2;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #996DF2;
+    max-width: 500px;
+    height: 200px;
+
+    .hours {
+        display: flex;
+        justify-content: space-around;
+        
+        .hour {
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            border-left: 2px solid #000;
+            padding-left: 15px;
+
+            &:first-child {
+                border: none;
+            }
+
+            .icon {
+                width: 32px;
+                height: auto;
+            }
+        }
+    }
+}
