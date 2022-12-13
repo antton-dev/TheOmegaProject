@@ -20,5 +20,3 @@ if (q_city) {
         });
     });
 }
-
-alert("test")

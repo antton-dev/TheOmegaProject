@@ -55,10 +55,8 @@ function iconWeather(code) {
         return "302"
     } else if (code == 65 || code == 66 || code == 67 || code == 82) {
         return "308"
-    } else if (code == 71 || code == 73 || code == 85) {
+    } else if (code == 71 || code == 73 || code == 85 ||code == 75 || code == 77 || code == 86) {
         return "326"
-    } else if (code == 75 || code == 77 || code == 86) {
-        return "338"
     } else if (code == 95) {
         return "389"
     } else if (code == 96 || code == 99) {
@@ -85,7 +83,7 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' +
         const content = `
             <div class="hour">
                 <span class="time">${date.getHours()+index >= 24 ? date.getHours()+index-24 : date.getHours()+index }</span>
-                <img class="icon" src="images/weather/${dayNight(date.getHours() + index)}/${iconWeather(nextHoursCode[index])}.png">
+                <img class="icon" src="images/weather/${dayNight(date.getHours() + index)}/${iconWeather(nextHoursCode[index])}.svg">
                 <span class="temperature">${temperature}°</span>
             </div>
             `
@@ -122,7 +120,7 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' +
         const content = `
         <div class="hour">
             <span class="time">${dictDays[Day.getDay()]}.${Day.getDate()}</span>
-            <img class="icon" src="images/weather/day/${iconWeather(weathercode[index])}.png">
+            <img class="icon" src="images/weather/day/${iconWeather(weathercode[index])}.svg">
             <span class="temperature">${temperatureMin}°</span>
             <span class="temperature">${temperatureMax[index]}°</span>
         </div>
