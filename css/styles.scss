@@ -31,28 +31,12 @@ header {
 
 main {
     margin: auto;
-    display: flex;
-    flex-direction: row;
-    width: 90vw;
     height: 85vh;
 
-    .left {
-        display: flex;
-        flex-wrap: wrap;
-        height: 100%;
-        width: 100%;
-        
-        // background: #e85e5ea5;
-
-        .hours {
-            height: 100%;
-        }
-    }
-
-    .right {
-        width: 100%;
-        // background: #2146e96d;
-    }
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) 2fr;
+    grid-template-rows: 1.5fr repeat(3, 1fr);
+    row-gap: 30px;
 }
 
 
@@ -60,28 +44,184 @@ main {
     background: #9a6ef2d5;
     border-radius: 5px;
     box-shadow: 0px 0px 10px #996DF2;
-    max-width: 250px;
+    min-width: 250px;
+    padding: 0 20px;
+    width: 70%;
+    text-align: center;
 
-
-    .hours {
-        display: flex;
-        justify-content: space-around;
+    hr {
+        width: 170px;
+        border: none;
+        border-top: 2px solid #000;
         
-        .hour {
-            height: 100px;
-            display: flex;
-            flex-direction: column;
-            border-left: 2px solid #000;
-            padding-left: 15px;
+    }    
+}
 
-            &:first-child {
-                border: none;
-            }
 
-            .icon {
-                width: 32px;
-                height: auto;
-            }
-        }
+// .hours hr {
+//     margin-top: 25px;
+//     margin-bottom: 25px;
+// }
+
+.hour {
+    // background-color: #1ce;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 12px 0;
+
+    span, img {
+        width: 33%;
     }
+
+    &:first-child {
+        border: none;
+    }
+
+    .icon {
+        width: 17px;
+        height: auto;
+    }
+}
+
+
+
+.hours { 
+    grid-area: 1 / 1 / 5 / 2; 
+}
+
+.sun { 
+    grid-area: 3 / 2 / 5 / 3; 
+}
+
+.days { 
+    grid-area: 1 / 2 / 3 / 3; 
+}
+
+.thumbmail { 
+    grid-area: 1 / 3 / 3 / 4;
+}
+
+// .ecowatt {
+//     grid-area: 3 / 3 / 4 / 4; 
+//     text-align:left;
+
+//     hr {
+//         width: 80px;
+//         margin: 0;
+//     }
+    
+// }
+
+.air{ 
+    grid-area: 3 / 3 / 5 / 4; 
+    text-align:left;
+
+    hr {
+        width: 80px;
+        margin: 0;
+    }
+}
+
+
+.thumbmail {
+
+    // background-image: url('/images/thumbmail/hail.png');
+    background-position-x: 40%;
+    background-position-y: 70%;
+    background-size: 40%;
+    background-repeat: no-repeat;
+
+    h2 {
+        font-size: 4em;
+        font-weight: 700;
+        margin: 0;
+        line-height: 1em;
+        text-transform: uppercase;
+        
+    }
+    .thumbmail-temperature {
+        font-size: 5em;
+        font-weight: 700;
+    }
+
+    p {
+        font-size: 1em;
+        text-align: justify;
+        width: 400px;
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    main {
+        
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+    }
+}
+
+
+/* air quality */
+.air div {
+
+    span {
+        margin: 5px;
+        font-size: 0.75em;
+    }
+}
+
+.v_good {
+    background-color: #43c337b8;
+    color: #fff;
+    padding: 5px;
+    min-width: 12%;
+    text-align: center;
+    display: inline-block;
+}
+
+.good {
+    background-color: #1C9711;
+    color: #fff;
+    padding: 5px;
+    min-width: 12%;
+    text-align: center;
+    display: inline-block;
+}
+
+.moderate {
+    background: #D37B13;
+    color: #fff;
+    padding: 5px;
+    min-width: 12%;
+    text-align: center;
+    display: inline-block;
+}
+
+.bad {
+    background-color: #D32A13;
+    color: #fff;
+    padding: 5px;
+    min-width: 12%;
+    text-align: center;
+    display: inline-block;
+}
+
+.v_bad {
+    background-color: #9F1313;
+    color: #fff;
+    padding: 5px;
+    min-width: 12%;
+    text-align: center;
+    display: inline-block;
+}
+
+.danger {
+    background-color: #61176D;
+    color: #fff;
+    padding: 5px;
+    min-width: 12%;
+    text-align: center;
+    display: inline-block;
 }

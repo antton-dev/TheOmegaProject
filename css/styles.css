@@ -27,33 +27,14 @@ header {
 
 main {
   margin: auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  width: 90vw;
   height: 85vh;
-}
-
-main .left {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  height: 100%;
-  width: 100%;
-}
-
-main .left .hours {
-  height: 100%;
-}
-
-main .right {
-  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2] 2fr;
+      grid-template-columns: repeat(2, 1fr) 2fr;
+  -ms-grid-rows: 1.5fr (1fr)[3];
+      grid-template-rows: 1.5fr repeat(3, 1fr);
+  row-gap: 30px;
 }
 
 .card {
@@ -61,36 +42,185 @@ main .right {
   border-radius: 5px;
   -webkit-box-shadow: 0px 0px 10px #996DF2;
           box-shadow: 0px 0px 10px #996DF2;
-  max-width: 250px;
+  min-width: 250px;
+  padding: 0 20px;
+  width: 70%;
+  text-align: center;
 }
 
-.card .hours {
+.card hr {
+  width: 170px;
+  border: none;
+  border-top: 2px solid #000;
+}
+
+.hour {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-}
-
-.card .hours .hour {
-  height: 100px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  border-left: 2px solid #000;
-  padding-left: 15px;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 12px 0;
 }
 
-.card .hours .hour:first-child {
+.hour span, .hour img {
+  width: 33%;
+}
+
+.hour:first-child {
   border: none;
 }
 
-.card .hours .hour .icon {
-  width: 32px;
+.hour .icon {
+  width: 17px;
   height: auto;
+}
+
+.hours {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 4;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-area: 1 / 1 / 5 / 2;
+}
+
+.sun {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-area: 3 / 2 / 5 / 3;
+}
+
+.days {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-area: 1 / 2 / 3 / 3;
+}
+
+.thumbmail {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-area: 1 / 3 / 3 / 4;
+}
+
+.air {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-area: 3 / 3 / 5 / 4;
+  text-align: left;
+}
+
+.air hr {
+  width: 80px;
+  margin: 0;
+}
+
+.thumbmail {
+  background-position-x: 40%;
+  background-position-y: 70%;
+  background-size: 40%;
+  background-repeat: no-repeat;
+}
+
+.thumbmail h2 {
+  font-size: 4em;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+
+.thumbmail .thumbmail-temperature {
+  font-size: 5em;
+  font-weight: 700;
+}
+
+.thumbmail p {
+  font-size: 1em;
+  text-align: justify;
+  width: 400px;
+}
+
+@media screen and (max-width: 1000px) {
+  main {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -ms-grid-rows: (1fr)[4];
+        grid-template-rows: repeat(4, 1fr);
+  }
+}
+
+/* air quality */
+.air div span {
+  margin: 5px;
+  font-size: 0.75em;
+}
+
+.v_good {
+  background-color: #43c337b8;
+  color: #fff;
+  padding: 5px;
+  min-width: 12%;
+  text-align: center;
+  display: inline-block;
+}
+
+.good {
+  background-color: #1C9711;
+  color: #fff;
+  padding: 5px;
+  min-width: 12%;
+  text-align: center;
+  display: inline-block;
+}
+
+.moderate {
+  background: #D37B13;
+  color: #fff;
+  padding: 5px;
+  min-width: 12%;
+  text-align: center;
+  display: inline-block;
+}
+
+.bad {
+  background-color: #D32A13;
+  color: #fff;
+  padding: 5px;
+  min-width: 12%;
+  text-align: center;
+  display: inline-block;
+}
+
+.v_bad {
+  background-color: #9F1313;
+  color: #fff;
+  padding: 5px;
+  min-width: 12%;
+  text-align: center;
+  display: inline-block;
+}
+
+.danger {
+  background-color: #61176D;
+  color: #fff;
+  padding: 5px;
+  min-width: 12%;
+  text-align: center;
+  display: inline-block;
 }
 /*# sourceMappingURL=styles.css.map */

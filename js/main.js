@@ -63,7 +63,7 @@ function iconWeather(code) {
         return "351"
     } else {
         console.log("Une erreur s'est produite, contactez le développeur")
-        return "fas fa-question-circle"
+        return "warning"
     }
 }
 
@@ -78,23 +78,35 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' +
 
     let i = 0
 
-    console.log(nextHours);
+    console.log(nextHours[0]);
     nextHours.forEach((temperature, index) => {
         const content = `
             <div class="hour">
-                <span class="time">${date.getHours()+index >= 24 ? date.getHours()+index-24 : date.getHours()+index }</span>
+                <span class="time">${date.getHours()+index >= 24 ? date.getHours()+index-24 : date.getHours()+index }:00</span>
                 <img class="icon" src="images/weather/${dayNight(date.getHours() + index)}/${iconWeather(nextHoursCode[index])}.svg">
-                <span class="temperature">${temperature}°</span>
+                <span class="temperature">${temperature}°C</span>
             </div>
             `
-        if (i < 7) {    
+        if (i < 17) {    
             hours.insertAdjacentHTML('beforeend', content)
             i += 1
         }
     });
-    
 
+    let thumbmail = document.querySelector('.thumbmail')
+    console.log(iconWeather(nextHoursCode[0]));
+    if (iconWeather(nextHoursCode[0]) == 248) {
+        thumbmail.style.backgroundImage = 'url("/images/thumbmail/' + 122 + '.png")'
+    } else if (iconWeather(nextHoursCode[0] == 308)) {
+        thumbmail.style.backgroundImage = 'url("/images/thumbmail/' + 302 + '.png")'
+    }
+
+    thumbmail.style.backgroundImage = 'url("/images/thumbmail/' + iconWeather(nextHoursCode[0]) + '.png")'
+    document.querySelector('.thumbmail-temperature').innerHTML = Math.floor(nextHours[0]) + '°C'
+    
 })
+
+
 
 
 let date7days = date.getTime() + 3600000*168
@@ -121,11 +133,28 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' +
         <div class="hour">
             <span class="time">${dictDays[Day.getDay()]}.${Day.getDate()}</span>
             <img class="icon" src="images/weather/day/${iconWeather(weathercode[index])}.svg">
-            <span class="temperature">${temperatureMin}°</span>
-            <span class="temperature">${temperatureMax[index]}°</span>
+            <span class="temperature">${temperatureMin}°C</span>
+            <span class="temperature">${temperatureMax[index]}°C</span>
         </div>
         `
 
         days.insertAdjacentHTML('beforeend', content)
     });
+})
+
+
+
+
+// CITY CARD 
+document.querySelector('h2').innerHTML = cityName
+
+
+// air quality
+fetch('https://air-quality-api.open-meteo.com/v1/air-quality?latitude=43.33&longitude=-0.43&hourly=european_aqi,european_aqi_pm2_5,european_aqi_pm10&timezone=Europe%2FBerlin&start_date='+ today + '&end_date=' + today)
+.then(res => res.json())
+.then(data => {
+    let hourly = data.hourly
+    console.log(hourly);
+
+    
 })
