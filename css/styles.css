@@ -257,4 +257,17 @@ main {
           align-items: center;
   font-weight: 600;
 }
+
+footer {
+  text-align: right;
+  margin-right: 20px;
+}
+
+footer a {
+  text-decoration: underline;
+}
+
+footer a:hover {
+  text-decoration: none;
+}
 /*# sourceMappingURL=styles.css.map */

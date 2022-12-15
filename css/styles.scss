@@ -232,20 +232,30 @@ main {
 
 .selected {
     border: 4px solid #000;
-  }
+}
 
 
+.sun img {
+width: 30%;
+height: auto;
+}
+
+.sun div {
+display: flex;
+flex-direction: column;
+align-items: center;
+font-weight: 600;
+}
 
 
+footer {
+    text-align: right;
+    margin-right: 20px;
+    a {
+        text-decoration: underline;
 
-  .sun img {
-    width: 30%;
-    height: auto;
-  }
-
-  .sun div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-weight: 600;
-  }
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
