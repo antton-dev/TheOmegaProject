@@ -116,7 +116,7 @@ let week = date7days.slice(0,10)
 console.log(week);
 
 
-fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + long + '&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&timezone=' + tz + '&start_date=' + today + '&end_date=' + week)
+fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + long + '&daily=weathercode,temperature_2m_max,temperature_2m_min,sunset,sunrise&current_weather=true&timezone=' + tz + '&start_date=' + today + '&end_date=' + week)
 .then(res => res.json())
 
 .then(data => {
@@ -139,6 +139,25 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' +
         `
 
         days.insertAdjacentHTML('beforeend', content)
+
+        const sunsetD = new Date(daily.sunset[0])
+        const sunriseD = new Date(daily.sunrise[0])
+
+        function zero(time) {
+            if (time < 10) {
+                return "0" + time
+            } else {
+                return time
+            }
+        }
+
+        let sunset = zero(sunsetD.getHours()) + ':' + zero(sunsetD.getMinutes()) 
+        let sunrise= zero(sunriseD.getHours()) + ':' + zero(sunriseD.getMinutes()) 
+        // let sunrise = daily.sunrise[0]
+        // let sunset = daily.sunset[0]
+        console.log('sunrise / sunset :' + sunrise + " / " + sunset);
+        document.querySelector('.time-sunrise').innerHTML = sunrise
+        document.querySelector('.time-sunset').innerHTML = sunset
     });
 })
 
@@ -151,42 +170,55 @@ document.querySelector('h2').innerHTML = cityName
 
 // air quality
 function air(code, element) {
-    if (code >= 0 && code < 20) {
+    if (code >= 0 && code <= 50) {
         element[0].setAttribute('class', 'v_good selected')
-    } else if (code >= 20 && code < 40) {
+        console.log('tres bien');
+        return "La qualité de l'air est satisfaisante et pose peu ou pas de risque pour la santé."
+        
+    } else if (code >= 51 && code <= 100) {
         console.log('bien');
         element[1].setAttribute('class', 'good selected')
-    } else if (code >= 40 && code < 60) {
+        return "La qualité de l'air est acceptable.  Cependant, il peut y avoir un risque pour certaines personnes, en particulier celles qui sont particulièrement sensibles à la pollution de l'air."
+        
+    } else if (code >= 101 && code <= 150) {
         console.log('moyen');
         element[2].setAttribute('class', 'moderate selected')
-    } else if (code >= 60 && code < 80) {
+        return "Les membres des groupes sensibles peuvent ressentir des effets sur la santé.  Le grand public est moins susceptible d'être touché."
+        
+    } else if (code >= 151 && code <= 200) {
         console.log('mauvais');
         element[3].setAttribute('class', 'bad selected')
-    } else if (code >=80 && code < 100) {
+        return "Certains membres du grand public peuvent éprouver des effets sur la santé;  les membres des groupes sensibles peuvent subir des effets plus graves sur leur santé."
+        
+    } else if (code >=201 && code <= 300) {
         console.log('tres mauvais');
         element[4].setAttribute('class', 'v_bad selected')
-    } else if (euro_aqi >= 100) {
+        return "Le risque d'effets sur la santé est accru pour tout le monde."
+        
+    } else if (code >= 301) {
         console.log("danger");
         element[5].setAttribute('class', 'danger selected')
+        return "Alerte sanitaire : La qualité de l'air est extrêmement mauvaise et présente une risque majeur pour la santé. Toute la population est plus susceptible d'être touché."
     } else {
         console.log('Qualité de l\' air inconnue')
     }
 }
 
-fetch('https://air-quality-api.open-meteo.com/v1/air-quality?latitude=' + lat + '&longitude=' + long + '&hourly=european_aqi,european_aqi_pm2_5,european_aqi_pm10&timezone=Europe%2FBerlin&start_date='+ today + '&end_date=' + today)
+// fetch('https://air-quality-api.open-meteo.com/v1/air-quality?latitude=' + lat + '&longitude=' + long + '&hourly=european_aqi,european_aqi_pm2_5,european_aqi_pm10&timezone=Europe%2FBerlin&start_date='+ today + '&end_date=' + today)
+fetch('https://api.airvisual.com/v2/nearest_city?lat=' + lat + '&lon=' + long + '&key=acaad8b2-e27f-44f9-ba13-9c2e6425d0ce')
 .then(res => res.json())
 .then(data => {
-    let hourly = data.hourly
-    console.log(hourly);
-    let euro_aqi = hourly.european_aqi[date.getHours()]
-    console.log(euro_aqi);
-    air(euro_aqi, document.querySelector('.general').children)
-    
-    let euro_aqi_pm2_5 = hourly.european_aqi_pm2_5[date.getHours()]
-    console.log(euro_aqi_pm2_5);
-    air(euro_aqi_pm2_5, document.querySelector('.pm2-5').children)
-    
-    let euro_aqi_pm10 = hourly.european_aqi_pm10[date.getHours()]
-    console.log(euro_aqi_pm10);
-    air(euro_aqi_pm10, document.querySelector('.pm10').children)
+    console.log(data)
+    if (data.status == "fail") {
+        document.querySelector('.general p').innerHTML = "La qualité de l'air à " + cityName +" n'est pas disponible pour le moment."
+        document.querySelectorAll('.general span').forEach(span => {
+            span.style.display = 'none'
+        }); 
+    } else {
+
+        let aqius = data.data.current.pollution.aqius
+        console.log(aqius);
+        let text = air(aqius, document.querySelector('.general').children)
+        document.querySelector('.general p').innerHTML = text
+    }
 })
