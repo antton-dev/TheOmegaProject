@@ -224,4 +224,8 @@ main {
   text-align: center;
   display: inline-block;
 }
+
+.selected {
+  border: 4px solid #000;
+}
 /*# sourceMappingURL=styles.css.map */

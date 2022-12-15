@@ -96,12 +96,12 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' +
     let thumbmail = document.querySelector('.thumbmail')
     console.log(iconWeather(nextHoursCode[0]));
     if (iconWeather(nextHoursCode[0]) == 248) {
-        thumbmail.style.backgroundImage = 'url("/images/thumbmail/' + 122 + '.png")'
+        thumbmail.style.backgroundImage = 'url("./images/thumbmail/122.png")'
     } else if (iconWeather(nextHoursCode[0] == 308)) {
-        thumbmail.style.backgroundImage = 'url("/images/thumbmail/' + 302 + '.png")'
+        thumbmail.style.backgroundImage = 'url("./images/thumbmail/122.png")'
     }
 
-    thumbmail.style.backgroundImage = 'url("/images/thumbmail/' + iconWeather(nextHoursCode[0]) + '.png")'
+    thumbmail.style.backgroundImage = 'url("./images/thumbmail/' + iconWeather(nextHoursCode[0]) + '.png")'
     document.querySelector('.thumbmail-temperature').innerHTML = Math.floor(nextHours[0]) + '°C'
     
 })
@@ -150,11 +150,43 @@ document.querySelector('h2').innerHTML = cityName
 
 
 // air quality
-fetch('https://air-quality-api.open-meteo.com/v1/air-quality?latitude=43.33&longitude=-0.43&hourly=european_aqi,european_aqi_pm2_5,european_aqi_pm10&timezone=Europe%2FBerlin&start_date='+ today + '&end_date=' + today)
+function air(code, element) {
+    if (code >= 0 && code < 20) {
+        element[0].setAttribute('class', 'v_good selected')
+    } else if (code >= 20 && code < 40) {
+        console.log('bien');
+        element[1].setAttribute('class', 'good selected')
+    } else if (code >= 40 && code < 60) {
+        console.log('moyen');
+        element[2].setAttribute('class', 'moderate selected')
+    } else if (code >= 60 && code < 80) {
+        console.log('mauvais');
+        element[3].setAttribute('class', 'bad selected')
+    } else if (code >=80 && code < 100) {
+        console.log('tres mauvais');
+        element[4].setAttribute('class', 'v_bad selected')
+    } else if (euro_aqi >= 100) {
+        console.log("danger");
+        element[5].setAttribute('class', 'danger selected')
+    } else {
+        console.log('Qualité de l\' air inconnue')
+    }
+}
+
+fetch('https://air-quality-api.open-meteo.com/v1/air-quality?latitude=' + lat + '&longitude=' + long + '&hourly=european_aqi,european_aqi_pm2_5,european_aqi_pm10&timezone=Europe%2FBerlin&start_date='+ today + '&end_date=' + today)
 .then(res => res.json())
 .then(data => {
     let hourly = data.hourly
     console.log(hourly);
-
+    let euro_aqi = hourly.european_aqi[date.getHours()]
+    console.log(euro_aqi);
+    air(euro_aqi, document.querySelector('.general').children)
     
+    let euro_aqi_pm2_5 = hourly.european_aqi_pm2_5[date.getHours()]
+    console.log(euro_aqi_pm2_5);
+    air(euro_aqi_pm2_5, document.querySelector('.pm2-5').children)
+    
+    let euro_aqi_pm10 = hourly.european_aqi_pm10[date.getHours()]
+    console.log(euro_aqi_pm10);
+    air(euro_aqi_pm10, document.querySelector('.pm10').children)
 })
