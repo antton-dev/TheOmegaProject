@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        <h1><a href="search.html">The Omega Project <sup>BETA</sup></a></h1>
+        <h1><a href="/">The Omega Project <sup>BETA</sup></a></h1>
         
     </header>
 
@@ -65,15 +65,20 @@
         <section class="card air">
             <h3>QUALITE DE L'AIR <sup class="help" title="Fonctionnalité encore en développement, données peu fiables.">Alpha</sup></h3>
             <hr>
-            <div class="general">
+            <div id="mobile" class="general">
+                <span class="v_good">1</span><span class="good">2</span><span class="moderate">3</span><span class="bad">4</span><span class="v_bad">5</span><span class="danger">6</span>
+                <p class="air_help"></p>
+            </div>
+            <div id="desktop" class="general">
                 <span class="v_good">Très bon</span><span class="good">Bon</span><span class="moderate">Moyen</span><span class="bad">Mauvais</span><span class="v_bad">Très mauvais</span><span class="danger">Danger élevé</span>
                 <p class="air_help"></p>
             </div>
+            
         </section>
     </main>
     <footer>
          2022 <a href="https://github.com/antton-dev" target="_blank" rel="noopener noreferrer">@antton-dev</a> - <a href="https://github.com/antton-dev/TheOmegaProject" target="_blank" rel="noopener noreferrer">Contribute</a>
     </footer>
-    <script src="js/main.js" defer></script>
+    <script src="js/main.js" ></script>
 </body>
 </html>

@@ -210,7 +210,10 @@ fetch('https://api.airvisual.com/v2/nearest_city?lat=' + lat + '&lon=' + long + 
 .then(data => {
     console.log(data)
     if (data.status == "fail") {
-        document.querySelector('.general p').innerHTML = "La qualité de l'air à " + cityName +" n'est pas disponible pour le moment."
+        document.querySelectorAll('.general p').forEach(p => {
+            p.innerHTML = "La qualité de l'air à " + cityName +" n'est pas disponible pour le moment."
+        })
+
         document.querySelectorAll('.general span').forEach(span => {
             span.style.display = 'none'
         }); 
@@ -219,6 +222,8 @@ fetch('https://api.airvisual.com/v2/nearest_city?lat=' + lat + '&lon=' + long + 
         let aqius = data.data.current.pollution.aqius
         console.log(aqius);
         let text = air(aqius, document.querySelector('.general').children)
-        document.querySelector('.general p').innerHTML = text
+        document.querySelectorAll('.general p').forEach(p => {
+            p.innerHTML = text
+        })
     }
 })

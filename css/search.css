@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Orbitron:wght@500&display=swap');
+
+
+
 body {
     margin: 0;
     height: 100vh;
@@ -5,5 +9,43 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    background-color: #6623F0;
+    color: #fff;
+    font-family: "Manrope", sans-serif;
+}
 
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+form {
+    width: 50%;
+    text-align: center;
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+li {
+    margin: 10px;
+}
+
+input {
+    border: none;
+    padding: 10px;
+    font-family: "Manrope", sans-serif;
+    font-size: 1em;
+}
+
+input[type=search] {
+    max-width: 200px;
+    width: 100%;
+}
+
+input[type=submit] {
+    background-color: #9a6ef2d5;
 }
