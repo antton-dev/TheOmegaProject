@@ -14,7 +14,7 @@ if (q_city) {
             
             let resultsUl = document.querySelector('ul')
             const content = `
-            <li><a href="app.html?ville=${city.name}&lat=${city.latitude}&long=${city.longitude}&tz=${city.timezone}">${city.name}, ${city.admin2}, ${city.country}</a></li>
+            <li><a href="app.html?ville=${city.name}&lat=${city.latitude}&long=${city.longitude}&tz=${city.timezone}&country=${city.country_code}">${city.name}, ${city.admin2}, ${city.country}</a></li>
             `
             resultsUl.insertAdjacentHTML('beforeend', content)
         });

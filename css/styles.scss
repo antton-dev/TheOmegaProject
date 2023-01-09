@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Orbitron:wght@500&display=swap');
 
+
 /* VARIABLES */
 .help {
     cursor: help;
@@ -24,6 +25,7 @@ sup {
 body {
     margin: 0;
     font-family: manrope, sans-serif;
+    transition: all .5s ease;
 }
 
 header {
@@ -125,10 +127,13 @@ main {
 .thumbmail {
 
     // background-image: url('/images/thumbmail/hail.png');
-    background-position-x: 40%;
+    background-position-x: 100%;
     background-position-y: 70%;
-    background-size: 40%;
+    background-size: 70%;
     background-repeat: no-repeat;
+    background-color: transparent;
+    background-blend-mode: darken;
+    transition: background-color .3s ease;
 
     h2 {
         font-size: 4em;
@@ -146,7 +151,7 @@ main {
     p {
         font-size: 1em;
         text-align: justify;
-        width: 400px;
+        max-width: 400px;
     }
 }
 
@@ -283,6 +288,5 @@ footer {
 
     .thumbmail {
         background-color: #220b5166;
-        background-blend-mode: darken;
     }
 }

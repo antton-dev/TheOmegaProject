@@ -22,6 +22,8 @@ sup {
 body {
   margin: 0;
   font-family: manrope, sans-serif;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
 }
 
 header {
@@ -136,10 +138,14 @@ main {
 }
 
 .thumbmail {
-  background-position-x: 40%;
+  background-position-x: 100%;
   background-position-y: 70%;
-  background-size: 40%;
+  background-size: 70%;
   background-repeat: no-repeat;
+  background-color: transparent;
+  background-blend-mode: darken;
+  -webkit-transition: background-color .3s ease;
+  transition: background-color .3s ease;
 }
 
 .thumbmail h2 {
@@ -158,7 +164,7 @@ main {
 .thumbmail p {
   font-size: 1em;
   text-align: justify;
-  width: 400px;
+  max-width: 400px;
 }
 
 @media screen and (max-width: 1000px) {
@@ -300,7 +306,6 @@ footer a:hover {
   }
   .thumbmail {
     background-color: #220b5166;
-    background-blend-mode: darken;
   }
 }
 /*# sourceMappingURL=styles.css.map */

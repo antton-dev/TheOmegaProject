@@ -6,6 +6,7 @@ let lat = url.searchParams.get("lat")
 let long = url.searchParams.get("long")
 let tz = url.searchParams.get('tz')
 let cityName = url.searchParams.get('ville')
+let cityCountry = url.searchParams.get('country')
 
 
 const hours = document.querySelector('.hours')
@@ -165,7 +166,7 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' +
 
 
 // CITY CARD 
-document.querySelector('h2').innerHTML = cityName
+document.querySelector('h2').innerHTML = cityName + " - " + cityCountry
 
 
 // air quality
@@ -226,4 +227,41 @@ fetch('https://api.airvisual.com/v2/nearest_city?lat=' + lat + '&lon=' + long + 
             p.innerHTML = text
         })
     }
+})
+
+
+// City description
+String.prototype.truncateBySent = function(sentCount = 3, moreText = "") {
+    //match ".","!","?" - english ending sentence punctuation
+    var sentences = this.match(/[^\.!\?]+[\.!\?]+/g);
+    if (sentences) {
+        console.log(sentences.length);
+        if (sentences.length >= sentCount && sentences.length > sentCount) {
+        //has enough sentences
+        return sentences.slice(0, sentCount).join(" ") + moreText;
+        }
+    }
+    //return full text if nothing else
+    return this;
+};
+
+if (cityCountry == "FR") {
+
+    fetch("https://fr.wikipedia.org/w/api.php?origin=*&action=query&titles=" + cityName + "&prop=extracts&format=json&explaintext=1&exintro=1")
+    .then(res => res.json())
+    .then(data => {
+        let pages = data.query.pages
+        console.log(pages);
+        let intro = Object.values(pages)[0].extract.replace(/ *\([^)]*\) */g, " ")
+        
+        document.querySelector('.thumbmail p').innerHTML = intro.truncateBySent(2)
+    })
+}
+    
+    
+    
+    document.querySelector('#mode').addEventListener('click', function (){
+    document.querySelector('body').style.backgroundColor = '#220b50';
+    document.querySelector('body').style.color = '#fff';
+    document.querySelector('.thumbmail').style.backgroundColor = '#220b5166';
 })
