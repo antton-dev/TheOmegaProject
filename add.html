@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter une description</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/add.css">
+</head>
+<body>
+    <main>
+
+        <h2>AJOUTER UNE DESCRIPTION</h2>
+        <p>Bienvenue sur la page dedié à la collaboration ! Les textes d'introduction présentants les villes avec un bref texte proviennent de l'API de Wikipedia. Seulement, pour des contraites techniques, nous ne pouvons récupérer le texte que pour les villes françaises, et à condition qu'elles possèdent une page Wikipédia. Vous avez trouvé une ville qui ne présente aucun texte ? Aidez-nous dès à présent en rédigeant vous-même un texte.</p>
+        <h3>Contraintes</h3>
+        <p>Le texte doit répondre aux critères suivants :
+            <ul>
+                <li>Longueur : 2 phrases maximum (les phrases supplémentaires seront tronquées). Longeur totale d'environ 30 à 50 mots</li>
+                <li>Pas de fautes d'orthographe : Même si les textes seront relus avant publication, merci de nous faciliter la tâche en evitant au maximum les fautes.</li>
+                <li>Langues : Vous pouvez écrire en Français (à prioriser). Cependant, dans l'objectif d'internationaliser le site, vous pouvez également rédiger une introduction en Anglais. Les autres langues sont refusées pour l'instant. (Tolérence si langue locale)</li>
+                <li>Pas de texte entre parenthèses : les caractères entre parenthèses sont automatiquement supprimés.</li>
+                <li>Objectivité : Nous demandons à nos auteurs d'être le plus objectif et partial possible. Merci de ne pas faire la promotion d'une ville plus qu'une autre.</li>
+                <li>Le vocabulaire grossier, offensant, hors-sujet, de nature à promouvoir des délits ou des crimes, ou ne respectant pas les juridictions françaises et européennes sont strictement interdits.</li>
+                <li>Plagiat : Faites attention à ne pas soumettre de contenu soumis à un droit d'auteur. Les contenus provenant d'internet ne sont pas interdits, du moment qu'ils sont libres d'utilisation <strong>sans crédit ou mentions</strong></li>  
+            </ul>
+        </p>
+        <form method="get" action="#">
+            <input required type="text" placeholder="Pseudo">
+            <input required type="text" placeholder="Moyen de contact (Tél, Email, Discord, Instagram ou Github)">
+            <input required type="text" placeholder="Ville">
+            <textarea required name="intro" id="intro" cols="30" rows="10" placeholder="Introduction"></textarea>
+            
+            <button type="submit">Envoyer</button>
+        </form>
+    </main>
+    <footer>by <a href="http://github.com/antton-dev" target="_blank" rel="noopener noreferrer">@antton-dev</a></footer>
+
+</body>
+</html>
