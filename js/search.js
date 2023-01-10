@@ -1,6 +1,6 @@
-var str = document.location.href;
-var url = new URL(str);
-var q_city = url.searchParams.get("q_city");
+let str = document.location.href;
+let url = new URL(str);
+let q_city = url.searchParams.get("q_city");
 console.log(q_city);
 
 if (q_city) {
