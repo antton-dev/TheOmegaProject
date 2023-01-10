@@ -25,19 +25,20 @@
                 <li>Plagiat : Faites attention à ne pas soumettre de contenu soumis à un droit d'auteur. Les contenus provenant d'internet ne sont pas interdits, du moment qu'ils sont libres d'utilisation <strong>sans crédit ou mentions</strong></li>  
             </ul>
         </p>
-        <form method="get" action="#">
-            <input required list="cities" name="title" id="city" type="text" placeholder="Ville">
+        <form method="get" target="_blank" action="https://github.com/antton-dev/TheOmegaProject/issues/new">
+            <input required hidden readonly name="title" id="title" type="text" placeholder="Ville">
+            <textarea name="body" id="body" cols="30" rows="10" placeholder="Rédigez votre introduction"></textarea>
             <button type="submit">chercher</button>
         </form>
 
         <ul id="results">
-
+            
         </ul>
 
     </main>
     <footer>by <a href="http://github.com/antton-dev" target="_blank" rel="noopener noreferrer">@antton-dev</a></footer>
 
 
-    <script src="js/add.js"></script>
+    <script src="js/add-form.js"></script>
 </body>
 </html>
