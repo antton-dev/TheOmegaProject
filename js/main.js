@@ -205,8 +205,11 @@ function air(code, element) {
     }
 }
 
+
+const apiKey = process.env.API_KEY;
+
 // fetch('https://air-quality-api.open-meteo.com/v1/air-quality?latitude=' + lat + '&longitude=' + long + '&hourly=european_aqi,european_aqi_pm2_5,european_aqi_pm10&timezone=Europe%2FBerlin&start_date='+ today + '&end_date=' + today)
-fetch('https://api.airvisual.com/v2/nearest_city?lat=' + lat + '&lon=' + long + '&key=acaad8b2-e27f-44f9-ba13-9c2e6425d0ce')
+fetch('https://api.airvisual.com/v2/nearest_city?lat=' + lat + '&lon=' + long + '&key=' + apiKey)
 .then(res => res.json())
 .then(data => {
     console.log(data)
