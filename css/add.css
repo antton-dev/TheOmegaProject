@@ -1,0 +1,71 @@
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 50vw;
+  margin: 50px auto 10px;
+  gap: 20px;
+}
+
+form input {
+  height: 40px;
+}
+
+form textarea, form button, form input {
+  font-size: 1em;
+  font-family: inherit;
+  background: #996DF2;
+  color: #fff;
+  border: none;
+  padding: 0px 20px;
+  text-align: justify;
+}
+
+form textarea::-webkit-input-placeholder, form button::-webkit-input-placeholder, form input::-webkit-input-placeholder {
+  color: #fff;
+}
+
+form textarea:-ms-input-placeholder, form button:-ms-input-placeholder, form input:-ms-input-placeholder {
+  color: #fff;
+}
+
+form textarea::-ms-input-placeholder, form button::-ms-input-placeholder, form input::-ms-input-placeholder {
+  color: #fff;
+}
+
+form textarea::placeholder, form button::placeholder, form input::placeholder {
+  color: #fff;
+}
+
+form button {
+  width: 100px;
+  text-align: center;
+}
+
+form textarea {
+  padding: 10px 20px;
+}
+
+body {
+  height: auto;
+}
+
+h2 {
+  text-align: center;
+}
+
+main {
+  display: block;
+  text-align: justify;
+  width: 70vw;
+  height: auto;
+}
+
+footer {
+  padding: 10px;
+}
+/*# sourceMappingURL=add.css.map */
