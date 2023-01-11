@@ -11,8 +11,8 @@ if (city) {
     .then(data => {
         console.log(data);
         data.results.forEach(city => {
-            document.querySelector('#results').insertAdjacentHTML('beforeend', '<li><a href="add-form.html?id=' + city.id + '&ville=' + city.name + '&country=' + city.country + '">' + city.name + ' (' + city.country + ') - ' + city.id + '</a></li>')
-            console.log(city.name + ' - ' + city.id);
+            document.querySelector('#results').insertAdjacentHTML('beforeend', '<li><a href="add-form.html?id=' + city.id + '&ville=' + city.name + '&country=' + city.country_code + '">' + city.name + ' (' + city.country + ') - ' + city.id + '</a></li>')
+            console.log(city.name + ' - ' + city.id + city.country_code);
         });
     })
 }

@@ -1,5 +1,3 @@
-
-
 let str = document.location.href;
 let url = new URL(str);
 let lat = url.searchParams.get("lat")
@@ -7,6 +5,7 @@ let long = url.searchParams.get("long")
 let tz = url.searchParams.get('tz')
 let cityName = url.searchParams.get('ville')
 let cityCountry = url.searchParams.get('country')
+let cityId = url.searchParams.get('id')
 
 
 const hours = document.querySelector('.hours')
@@ -23,6 +22,8 @@ let today = dateISO.slice(0,10)
 let dateTomorrow = date.getTime() + 3600000*24
 dateTomorrow = new Date(dateTomorrow).toISOString()
 let tomorrow = dateTomorrow.slice(0,10)
+
+
 
 
 if (date.getDate() <= 9) {
@@ -246,22 +247,25 @@ String.prototype.truncateBySent = function(sentCount = 3, moreText = "") {
 };
 
 if (cityCountry == "FR") {
-
     fetch("https://fr.wikipedia.org/w/api.php?origin=*&action=query&titles=" + cityName + "&prop=extracts&format=json&explaintext=1&exintro=1")
     .then(res => res.json())
     .then(data => {
         let pages = data.query.pages
-        console.log(pages);
-        let intro = Object.values(pages)[0].extract.replace(/ *\([^)]*\) */g, " ")
-        
-        document.querySelector('.thumbmail p').innerHTML = intro.truncateBySent(2)
+
+        if (Object.values(pages)[0].missing == undefined) {    
+            let intro = Object.values(pages)[0].extract.replace(/ *\([^)]*\) */g, " ")
+            
+            document.querySelector('.thumbmail p').innerHTML = intro.truncateBySent(2)
+        } 
     })
-}
+} 
+
+document.querySelector('.add-intro').setAttribute('href', 'add-form.html?id=' + cityId + '&ville=' + cityName + '&country=' + cityCountry)
+   
     
     
-    
-    document.querySelector('#mode').addEventListener('click', function (){
-    document.querySelector('body').style.backgroundColor = '#220b50';
-    document.querySelector('body').style.color = '#fff';
-    document.querySelector('.thumbmail').style.backgroundColor = '#220b5166';
-})
+//     document.querySelector('#mode').addEventListener('click', function (){
+//     document.querySelector('body').style.backgroundColor = '#220b50';
+//     document.querySelector('body').style.color = '#fff';
+//     document.querySelector('.thumbmail').style.backgroundColor = '#220b5166';
+// })
