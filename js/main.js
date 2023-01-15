@@ -256,7 +256,7 @@ if (cityCountry == "FR") {
         } 
     })
 } else {
-    fetch('../database/intro.json')
+    fetch('./database/intro.json')
     .then(res => res.json())
     .then(data => {
         let description = data[cityId].description.fr
