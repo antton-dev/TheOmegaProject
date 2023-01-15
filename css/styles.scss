@@ -271,7 +271,7 @@ footer {
     margin-top: 100px;
     padding: 40px;
     min-height: 200px;
-    background-color: #0f0f1ffa;
+    background-color: #d6d6d6fa;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -310,5 +310,9 @@ footer {
 
     .thumbmail {
         background-color: #220b5166;
+    }
+
+    footer {    
+        background-color: #0f0f1ffa ;
     }
 }

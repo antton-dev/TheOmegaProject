@@ -290,7 +290,7 @@ footer {
   margin-top: 100px;
   padding: 40px;
   min-height: 200px;
-  background-color: #0f0f1ffa;
+  background-color: #d6d6d6fa;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -332,6 +332,9 @@ footer a:hover {
   }
   .thumbmail {
     background-color: #220b5166;
+  }
+  footer {
+    background-color: #0f0f1ffa;
   }
 }
 /*# sourceMappingURL=styles.css.map */
