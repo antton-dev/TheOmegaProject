@@ -11,6 +11,7 @@ a {
 h1 {
   font-family: "Orbitron", "Manrope", sans-serif;
   margin: 0;
+  color: #fff;
 }
 
 sup {
@@ -287,7 +288,8 @@ main {
 footer {
   text-align: center;
   margin-top: 100px;
-  height: 200px;
+  padding: 40px;
+  min-height: 200px;
   background-color: #0f0f1ffa;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -302,14 +304,15 @@ footer {
 }
 
 footer p {
-  max-width: 40vw;
+  width: 500px;
+  max-width: 70vw;
   margin: auto;
   text-align: justify;
   line-height: 35px;
 }
 
 footer .bottom-footer {
-  width: 100%;
+  padding-top: 20px;
   display: block;
 }
 
