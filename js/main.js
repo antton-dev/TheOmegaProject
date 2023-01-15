@@ -80,7 +80,6 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' +
 
     let i = 0
 
-    console.log(nextHours[0]);
     nextHours.forEach((temperature, index) => {
         const content = `
             <div class="hour">
@@ -96,7 +95,6 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' +
     });
 
     let thumbmail = document.querySelector('.thumbmail')
-    console.log(iconWeather(nextHoursCode[0]));
     if (iconWeather(nextHoursCode[0]) == 248) {
         thumbmail.style.backgroundImage = 'url("./images/thumbmail/122.png")'
     } else if (iconWeather(nextHoursCode[0] == 308)) {
@@ -115,7 +113,6 @@ let date7days = date.getTime() + 3600000*168
 date7days = new Date(date7days).toISOString()
 let week = date7days.slice(0,10)
 
-console.log(week);
 
 
 fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + long + '&daily=weathercode,temperature_2m_max,temperature_2m_min,sunset,sunrise&current_weather=true&timezone=' + tz + '&start_date=' + today + '&end_date=' + week)
@@ -123,7 +120,6 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' +
 
 .then(data => {
     let daily = data.daily
-    console.log(daily)
 
     let temperatureMax = daily.temperature_2m_max
     let weathercode = daily.weathercode    
@@ -157,7 +153,6 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' +
         let sunrise= zero(sunriseD.getHours()) + ':' + zero(sunriseD.getMinutes()) 
         // let sunrise = daily.sunrise[0]
         // let sunset = daily.sunset[0]
-        console.log('sunrise / sunset :' + sunrise + " / " + sunset);
         document.querySelector('.time-sunrise').innerHTML = sunrise
         document.querySelector('.time-sunset').innerHTML = sunset
     });
@@ -210,7 +205,6 @@ function air(code, element) {
 fetch('https://api.airvisual.com/v2/nearest_city?lat=' + lat + '&lon=' + long + '&key=acaad8b2-e27f-44f9-ba13-9c2e6425d0ce')
 .then(res => res.json())
 .then(data => {
-    console.log(data)
     if (data.status == "fail") {
         document.querySelectorAll('.general p').forEach(p => {
             p.innerHTML = "La qualité de l'air à " + cityName +" n'est pas disponible pour le moment."
@@ -222,7 +216,6 @@ fetch('https://api.airvisual.com/v2/nearest_city?lat=' + lat + '&lon=' + long + 
         
     } else {
         let aqius = data.data.current.pollution.aqius
-        console.log(aqius);
         document.querySelectorAll('.general').forEach(element => {
             let text = air(aqius, element.children)
 
@@ -241,7 +234,6 @@ String.prototype.truncateBySent = function(sentCount = 3, moreText = "") {
     //match ".","!","?" - english ending sentence punctuation
     var sentences = this.match(/[^\.!\?]+[\.!\?]+/g);
     if (sentences) {
-        console.log(sentences.length);
         if (sentences.length >= sentCount && sentences.length > sentCount) {
         //has enough sentences
         return sentences.slice(0, sentCount).join(" ") + moreText;
@@ -263,7 +255,14 @@ if (cityCountry == "FR") {
             document.querySelector('.thumbmail p').innerHTML = intro.truncateBySent(2)
         } 
     })
-} 
+} else {
+    fetch('../database/intro.json')
+    .then(res => res.json())
+    .then(data => {
+        let description = data[cityId].description.fr
+        document.querySelector('.thumbmail p').innerHTML = description.truncateBySent(3)
+    })
+}
 
 document.querySelector('.add-intro').setAttribute('href', 'add-form.html?id=' + cityId + '&ville=' + cityName + '&country=' + cityCountry)
    

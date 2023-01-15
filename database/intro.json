@@ -1,14 +1,39 @@
 {
-    "Palamos": {
-        "id": 3114566,
+    "3114566": {
+        "city": "Palamos",
         "lat": 41.84843,
         "long": 3.12912,
         "country_code": "ES", 
         "description": {
-            "en": "Palamós est une commune de la comarque du Baix Empordà dans la province de Gérone en Catalogne",
-            "fr": "",
+            "en": "",
+            "fr": "Palamós est situé à l'extrémité nord d'une grande baie, qui est populaire pour la natation, voile et planche à voile. La ville est parcourue par la C31, qui relie les villes côtières à Gérone. Palafrugell se trouve à 8,5 km au nord et Castell-Platja d'Aro à 7 km vers le sud.",
+            "es": ""
+        }
+    },
+
+    "3128760": {
+        "city": "Barcelone",
+        "lat": 41.38879,
+        "long": 2.15899,
+        "country_code": "ES", 
+        "description": {
+            "en": "",
+            "fr": "Barcelone est la capitale administrative et économique de la Catalogne, de la province de Barcelone, de la comarque du Barcelonès ainsi que de son aire et de sa région métropolitaines, en Espagne.",
+            "es": ""
+        }
+    },
+
+    "5128581": {
+        "city": "New York",
+        "lat": 40.71427,
+        "long": -74.00597,
+        "country_code": "US", 
+        "description": {
+            "en": "",
+            "fr": "New York, officiellement nommée City of New York, connue également sous les noms et abréviations de New York City ou NYC, et dont le surnom le plus connu est The Big Apple, est la plus grande ville des États-Unis en nombre d'habitants et l'une des plus importantes du continent américain et du monde.",
             "es": ""
         }
     }
-    
+
 }
+
