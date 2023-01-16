@@ -23,7 +23,28 @@ let dateTomorrow = date.getTime() + 3600000*24
 dateTomorrow = new Date(dateTomorrow).toISOString()
 let tomorrow = dateTomorrow.slice(0,10)
 
+let unity = "C"
+if (localStorage.getItem('unity')) {
+    unity = localStorage.getItem('unity')
+}
 
+if (unity == "C") {
+    document.querySelector("#unity").innerHTML = "Passer en °F"
+} else if (unity == "F") {
+    document.querySelector("#unity").innerHTML = "Passer en °C"
+}
+
+
+document.querySelector("#unity").addEventListener('click', function () {
+    if (unity == "C") {
+        localStorage.setItem('unity', 'F');
+        window.location.reload();
+        
+    } else if (unity == "F") {
+        localStorage.setItem('unity', 'C');
+        window.location.reload();
+    }
+})
 
 
 if (date.getDate() <= 9) {
@@ -69,6 +90,22 @@ function iconWeather(code) {
     }
 }
 
+
+
+
+function convert(temperature, target) {
+    if (target == "F") {
+        return (temperature * 9/5) + 32
+    }
+
+    if (target == "C") {
+        return temperature
+    }
+
+}
+
+
+
 fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + long + '&hourly=temperature_2m,weathercode&timezone=' + tz + '&start_date=' + today + '&end_date=' + tomorrow)
 .then(res => res.json())
 
@@ -85,7 +122,7 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' +
             <div class="hour">
                 <span class="time">${date.getHours()+index >= 24 ? date.getHours()+index-24 : date.getHours()+index }:00</span>
                 <img class="icon" src="images/weather/${dayNight(date.getHours() + index)}/${iconWeather(nextHoursCode[index])}.svg">
-                <span class="temperature">${temperature}°C</span>
+                <span class="temperature">${Math.round(convert(temperature, unity))}°${unity}</span>
             </div>
             `
         if (i < 17) {    
@@ -102,7 +139,7 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' +
     }
 
     thumbmail.style.backgroundImage = 'url("./images/thumbmail/' + iconWeather(nextHoursCode[0]) + '.png")'
-    document.querySelector('.thumbmail-temperature').innerHTML = Math.floor(nextHours[0]) + '°C'
+    document.querySelector('.thumbmail-temperature').innerHTML = Math.floor(convert(nextHours[0], unity)) + '°' + unity
     
 })
 
@@ -131,8 +168,8 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' +
         <div class="hour">
             <span class="time">${dictDays[Day.getDay()]}.${Day.getDate()}</span>
             <img class="icon" src="images/weather/day/${iconWeather(weathercode[index])}.svg">
-            <span class="temperature">${temperatureMin}°C</span>
-            <span class="temperature">${temperatureMax[index]}°C</span>
+            <span class="temperature">${Math.round(convert(temperatureMin, unity))}°${unity}</span>
+            <span class="temperature">${Math.round(convert(temperatureMax[index], unity))}°${unity}</span>
         </div>
         `
 
@@ -162,7 +199,7 @@ fetch('https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' +
 
 
 // CITY CARD 
-document.querySelector('h2').innerHTML = cityName + " - " + cityCountry
+document.querySelector('h2').innerHTML = cityName + '<span style="font-size:0.5em;">(' + cityCountry + ')</span>' 
 
 
 // air quality
