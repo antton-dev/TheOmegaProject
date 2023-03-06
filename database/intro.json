@@ -33,7 +33,40 @@
             "fr": "New York, officiellement nommée City of New York, connue également sous les noms et abréviations de New York City ou NYC, et dont le surnom le plus connu est The Big Apple, est la plus grande ville des États-Unis en nombre d'habitants et l'une des plus importantes du continent américain et du monde.",
             "es": ""
         }
-    }
+    },
+    "3117735": {
+        "city": "Madrid",
+        "lat": 40.4165,
+        "long": -3.70256,
+        "country_code": "ES", 
+        "description": {
+            "en": "",
+            "fr": "Située au centre de l'Espagne, Madrid, sa capitale, est une ville dotée d'élégants boulevards et de vastes parcs très bien entretenus comme le Retiro. Elle est réputée pour ses riches collections d'œuvres d'art européennes, avec notamment celles du musée du Prado.",
+            "es": ""
+        }
+    },
+    "2352778": {
+        "city": "Abuja",
+        "lat": 9.05785,
+        "long": 7.49508,
+        "country_code": "NG", 
+        "description": {
+            "en": "",
+            "fr": "Abuja est la capitale fédérale du Nigeria depuis 1991. Situé dans le Territoire de la capitale fédérale, cette ville planifiée de 713,5 km² est au centre du pays afin d'équilibrer les pouvoirs ethniques et religieux. Elle devient officiellement la capitale du Nigeria le 12 décembre 1991, remplaçant ainsi la mégapole côtière de Lagos.",
+            "es": ""
+        }
+    },
+    "292968": {
+        "city": "Abou Dabi",
+        "lat": 24.45118,
+        "long": 54.39696,
+        "country_code": "AE", 
+        "description": {
+            "en": "",
+            "fr": "Abou Dabi (ou Abu Dhabi), est la capitale de l'émirat d'Abou Dabi et des Émirats arabes unis. La ville compte près de 1,483 millions habitants et représente le centre politique et industriel de la fédération, et un centre culturel et commercial important dans le golfe Persique, du fait de sa position de capitale.",
+            "es": ""
+        }
+    },
 
 }
 
