@@ -66,6 +66,17 @@
             "fr": "Abou Dabi (ou Abu Dhabi), est la capitale de l'émirat d'Abou Dabi et des Émirats arabes unis. La ville compte près de 1,483 millions habitants et représente le centre politique et industriel de la fédération, et un centre culturel et commercial important dans le golfe Persique, du fait de sa position de capitale.",
             "es": ""
         }
+    },
+    "3172394": {
+        "city": "Naples",
+        "lat": 40.85216,
+        "long": 14.26811,
+        "country_code": "IT",
+        "description": {
+            "en": "",
+            "fr": "Naples est une ville d'Italie, chef-lieu de la région de Campanie. Elle est la troisième ville d'Italie par sa population et la dix-huitième de l'Union européenne. C'est aussi la deuxième plus grande cité méditerranéenne en Europe, après Barcelone.",
+            "es": "",
+        }
     }
 }
 
