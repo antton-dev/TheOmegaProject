@@ -77,6 +77,61 @@
             "fr": "Naples est une ville d'Italie, chef-lieu de la région de Campanie. Elle est la troisième ville d'Italie par sa population et la dix-huitième de l'Union européenne. C'est aussi la deuxième plus grande cité méditerranéenne en Europe, après Barcelone.",
             "es": ""
         }
+    },
+    "4140963": {
+        "city": "Washington",
+        "lat": 38.89511,
+        "long": -77.03637,
+        "country_code": "US",
+        "description": {
+            "en": "",
+            "fr": "Washington, la capitale des États-Unis, est une ville dense située sur les rives du Potomac, à la frontière des États du Maryland et de Virginie. Elle abrite les 3 branches du gouvernement fédéral : le Capitole, la Maison-Blanche et la Cour suprême.",
+            "es": ""
+        }
+    },
+    "3169070": {
+        "city": "Rome",
+        "lat": 41.89193,
+        "long": 12.51133,
+        "country_code": "IT",
+        "description": {
+            "en": "",
+            "fr": "Capitale de l'Italie, Rome est une grande ville cosmopolite dont l'art, l'architecture et la culture de presque 3 000 ans rayonnent dans le monde entier. Ses ruines telles que celles du Forum Romain et du Colisée évoquent la puissance de l'ancien Empire romain."
+            "es": ""
+        }
+    },
+    "2950159": {
+        "city": "Berlin",
+        "lat": 52.52437,
+        "long": 13.41053,
+        "country_code": "DE",
+        "description": {
+            "en": "",
+            "fr": "Berlin est la capitale et la plus grande ville d'Allemagne. Située dans le Nord-Est du pays, Berlin compte environ 3,8 millions d'habitants, appelés Berlinois et Berlinoises."
+            "es": ""
+        }
+    },
+    "2800866": {
+        "city": "Bruxelles",
+        "lat": 50.85045,
+        "long": 4.34878,
+        "country_code": "BE",
+        "description": {
+            "en": "",
+            "fr": "Bruxelles est une commune de Belgique de 183 287 habitants, capitale de la Belgique, siège de la Communauté française et de la Communauté flamande, ainsi que siège de plusieurs institutions de l'Union européenne. Le gentilé est le Bruxellois."
+            "es": ""
+        }
+    },
+    "2643743": {
+        "city": "Londres",
+        "lat": 51.50853,
+        "long": -0.12574,
+        "country_code": "GB",
+        "description": {
+            "en": "",
+            "fr": "Londres est la capitale et plus grande ville d'Angleterre et du Royaume-Uni. La ville est située près de l'estuaire de la Tamise dans le sud-est de l'Angleterre. Londres est considérée comme l'une des plus importantes villes au monde."
+            "es": ""
+        }
     }
 }
 
